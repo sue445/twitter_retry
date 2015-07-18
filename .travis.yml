@@ -1,4 +1,18 @@
 language: ruby
 rvm:
-  - 2.2.2
+  - 2.1
+  - 2.2
+  - ruby-head
 before_install: gem install bundler -v 1.10.5
+script: bundle exec rspec
+branches:
+  only:
+  - master
+notifications:
+  slack:
+    secure: auD2UNPVzPfJ9jKMQ89sK6aXYv5ekXSsuuqn8aiZ2+w96lb/B/lRVzOPgzmDe1/qIvYevYO3AcfgG373ARV0Ft/SEzlwiIOAhu47nyprM641AFiGQovCNe+vpWo6k3YD+J+WNG8NiD+6vDfmkmBSnE6/+VL5HUiVtW8FeFQ0lRBgcu789MWyXkZVtzvWvMTlPk3N94JgARUcT4F2bukTu1Ff95D4fZfnArJLfpv9uzxuCYUB9Ut33OdXb8k9xG+0OJeosV7oTYLKY3I+oK8mkweIzzy9flhpmLw6xCzARX2zQcsoEXeiDoUVKmldTLApBQMF96xCG6yxn1SaapsqKovVbudBuafjhpJklb1zG21UmYuNr7SmZqrLYcBb2sMLD41wyeBfJ/mO7SNWZlwJAvMrL5O538qpMfvbT3EQWGWdWnhYR79nKO5zLDqgUeJC847/QiS43MvnPlwObpO68bXdRq+C4Z6DfL96tjGfFprijKHJtZqG1kFHMELrDx6lzUi03Kt5FaHV2czz/5B7oqPsXvTWWa0yaLopxuSZqcD2zrSaso8bNFFqkt2X4CKTx2Jqq4IuGrrzqqr1NMSX2tbT06tJAKYCUQfa5mJqs2uRtzYR3jivukb+EwNOCFThrRBi69AYa2XAKjzCJ7DoFn3uQvXlmCu/3bbPQTs0LT4=
+matrix:
+  allow_failures:
+  - rvm: ruby-head
+sudo: false
+cache: bundler
