@@ -1,8 +1,6 @@
 # TwitterRetry
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/twitter_retry`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Twitter api awesome handling with retry
 
 [![Build Status](https://travis-ci.org/sue445/twitter_retry.svg?branch=master)](https://travis-ci.org/sue445/twitter_retry)
 [![Code Climate](https://codeclimate.com/github/sue445/twitter_retry/badges/gpa.svg)](https://codeclimate.com/github/sue445/twitter_retry)
@@ -26,8 +24,36 @@ Or install it yourself as:
     $ gem install twitter_retry
 
 ## Usage
+```ruby
+TwitterRetry.with_handing do
+  # some twitter API code
+  twitter.update("some tweet")
+end
+```
 
-TODO: Write usage instructions here
+* When `twitter.update` not raise error
+  * return `true`
+* When `twitter.update` raise `Twitter::Error::Forbidden` (Your account is suspended and is not permitted to access this feature.)
+  * raise `TwitterRetry::SuspendedError`
+* When `twitter.update` raise ignorable error (ex. `Twitter::Error::Forbidden`(User is over daily status update limit.))
+  * error is squashed
+  * return `false`
+* When `twitter.update` raise retryable error (ex. `Twitter::Error::ServiceUnavailable`(Over capacity))
+  * retry 3 times with sleep 1 second
+  * When successful in retry, return `true`
+  * When all failure, raise `TwitterRetry::RetryOverError`
+  
+The algorithm is actually more concise in code: See [TwitterRetry::Retryable](lib/twitter_retry/retryable.rb)
+
+## Configuration
+```ruby
+TwitterRetry.configure do |config|
+  config.sleep_second     = 1
+  config.max_retry_count  = 3
+  config.retryable_errors << [Twitter::Error, "some error message"]
+  config.ignorable_errors << [Twitter::Error, "some error message"]
+end
+```
 
 ## Development
 
