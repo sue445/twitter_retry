@@ -1,1 +1,3 @@
-inherit_from: .rubocop_standard.yml
+ruby:
+  enabled: true
+  config_file: .rubocop.yml
