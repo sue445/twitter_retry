@@ -25,6 +25,8 @@ end
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "twitter_retry"
 
+require "rspec-parameterized"
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -102,4 +104,11 @@ RSpec.configure do |config|
   #   Kernel.srand config.seed
 
   config.order = :random
+
+  config.before(:each) do
+    TwitterRetry.configure do |c|
+      c.sleep_second    = 0
+      c.max_retry_count = 3
+    end
+  end
 end
