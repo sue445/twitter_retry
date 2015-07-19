@@ -18,7 +18,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 if ENV["CI"]
-  require 'coveralls'
+  require "coveralls"
   Coveralls.wear!
 end
 
