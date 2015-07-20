@@ -8,6 +8,9 @@ Twitter api awesome handling with retry
 [![Coverage Status](https://coveralls.io/repos/sue445/twitter_retry/badge.svg?branch=master&service=github)](https://coveralls.io/github/sue445/twitter_retry?branch=master)
 [![Dependency Status](https://gemnasium.com/sue445/twitter_retry.svg)](https://gemnasium.com/sue445/twitter_retry)
 
+## Requirements
+* Ruby 2.1+
+
 ## Installation
 
 Add this line to your application's Gemfile:
