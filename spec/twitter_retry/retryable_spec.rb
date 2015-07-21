@@ -1,5 +1,5 @@
 describe TwitterRetry::Retryable do
-  describe "#retryable" do
+  describe "#retryable?" do
     subject { TwitterRetry.retryable?(error) }
 
     context "When can retry error" do
@@ -54,7 +54,7 @@ describe TwitterRetry::Retryable do
 
       it "should be called follow API with error ignore" do
         expect(twitter).to receive(:follow)
-        subject
+        is_expected.to be false
       end
     end
 
@@ -73,7 +73,7 @@ describe TwitterRetry::Retryable do
 
       it "should be called follow API" do
         expect(twitter).to receive(:follow)
-        subject
+        is_expected.to be true
       end
     end
 
