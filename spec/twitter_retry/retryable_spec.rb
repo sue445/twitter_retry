@@ -1,5 +1,5 @@
 describe TwitterRetry::Retryable do
-  describe "#retryable" do
+  describe "#retryable?" do
     subject { TwitterRetry.retryable?(error) }
 
     context "When can retry error" do
