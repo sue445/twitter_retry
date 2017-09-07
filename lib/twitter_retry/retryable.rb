@@ -47,9 +47,19 @@ module TwitterRetry
 
     private
 
-    def match_any_error?(error, check_errors)
+    def match_any_error?(source_error, check_errors)
       check_errors.any? do |error_class, message|
-        error.is_a?(error_class) && error.message.include?(message)
+        match_error?(source_error, error_class, message)
+      end
+    end
+
+    def match_error?(source_error, error_class, message)
+      return false unless source_error.is_a?(error_class)
+
+      if message.is_a?(Regexp)
+        source_error.message =~ message
+      else
+        source_error.message.include?(message)
       end
     end
   end

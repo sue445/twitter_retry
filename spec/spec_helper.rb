@@ -109,6 +109,8 @@ RSpec.configure do |config|
     TwitterRetry.configure do |c|
       c.sleep_second    = 0
       c.max_retry_count = 3
+      c.retryable_errors = TwitterRetry::DEFAULT_RETRYABLE_ERRORS
+      c.ignorable_errors = TwitterRetry::DEFAULT_IGNORABLE_ERRORS
     end
   end
 end
