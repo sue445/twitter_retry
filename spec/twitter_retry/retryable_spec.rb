@@ -3,7 +3,10 @@ describe TwitterRetry::Retryable do
     subject { TwitterRetry.retryable?(error) }
 
     before do
-      TwitterRetry.config.retryable_errors += [[Twitter::Error::ServiceUnavailable, /something/]]
+      TwitterRetry.config.retryable_errors += [
+        [Twitter::Error::ServiceUnavailable, /something/],
+        [Twitter::Error::BadGateway],
+      ]
     end
 
     context "When can retry error" do
@@ -14,6 +17,8 @@ describe TwitterRetry::Retryable do
         Twitter::Error::InternalServerError | "Internal error"
         Twitter::Error                      | "getaddrinfo: Name or service not known"
         Twitter::Error::ServiceUnavailable  | "Sorry, something wrong"
+        Twitter::Error::BadGateway          | nil
+        Twitter::Error::BadGateway          | "Sorry, something wrong"
       end
 
       with_them do
@@ -31,6 +36,8 @@ describe TwitterRetry::Retryable do
         Twitter::Error::InternalServerError | "huga"
         Twitter::Error                      | "core dump!"
         Twitter::Error::ServiceUnavailable  | "anything"
+        Twitter::Error::GatewayTimeout      | nil
+        Twitter::Error::GatewayTimeout      | "Sorry, something wrong"
       end
 
       with_them do
