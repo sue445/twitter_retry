@@ -56,6 +56,12 @@ TwitterRetry.configure do |config|
   config.max_retry_count  = 3
   config.retryable_errors << [Twitter::Error, "some error message"]
   config.ignorable_errors << [Twitter::Error, "some error message"]
+
+  # Check whether error message matched with regexp
+  config.retryable_errors << [Twitter::Error::ServiceUnavailable, /something/]
+
+  # Check whether only error class matches (error message can be anything)
+  config.ignorable_errors << [Twitter::Error::ServiceUnavailable]
 end
 ```
 
