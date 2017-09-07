@@ -2,6 +2,10 @@ describe TwitterRetry::Retryable do
   describe "#retryable?" do
     subject { TwitterRetry.retryable?(error) }
 
+    before do
+      TwitterRetry.config.retryable_errors += [[Twitter::Error::ServiceUnavailable, /something/]]
+    end
+
     context "When can retry error" do
       using RSpec::Parameterized::TableSyntax
 
@@ -9,6 +13,7 @@ describe TwitterRetry::Retryable do
         Twitter::Error::ServiceUnavailable  | "Over capacity"
         Twitter::Error::InternalServerError | "Internal error"
         Twitter::Error                      | "getaddrinfo: Name or service not known"
+        Twitter::Error::ServiceUnavailable  | "Sorry, something wrong"
       end
 
       with_them do
@@ -25,6 +30,7 @@ describe TwitterRetry::Retryable do
         Twitter::Error::ServiceUnavailable  | "huga"
         Twitter::Error::InternalServerError | "huga"
         Twitter::Error                      | "core dump!"
+        Twitter::Error::ServiceUnavailable  | "anything"
       end
 
       with_them do
