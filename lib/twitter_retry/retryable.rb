@@ -56,6 +56,9 @@ module TwitterRetry
     def match_error?(source_error, error_class, message)
       return false unless source_error.is_a?(error_class)
 
+      # Check only error class
+      return true unless message
+
       if message.is_a?(Regexp)
         source_error.message =~ message
       else
