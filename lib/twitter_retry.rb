@@ -6,6 +6,7 @@ require "twitter_retry/retryable"
 module TwitterRetry
   extend Retryable
 
+  # @return [TwitterRetry::Config]
   def self.config
     @config ||= Config.new
   end
