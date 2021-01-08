@@ -1,6 +1,4 @@
 module TwitterRetry
-  require "active_support/configurable"
-
   DEFAULT_RETRYABLE_ERRORS = [
     [Twitter::Error::ServiceUnavailable,  "Over capacity"],
     [Twitter::Error::InternalServerError, "Internal error"],
@@ -14,16 +12,27 @@ module TwitterRetry
   ]
 
   class Config
-    include ActiveSupport::Configurable
+    # @!attribute max_retry_count
+    #   @return [Integer]
+    attr_accessor :max_retry_count
 
-    config_accessor :max_retry_count, :sleep_second
-    config_accessor :retryable_errors, :ignorable_errors
+    # @!attribute sleep_second
+    #   @return [Integer]
+    attr_accessor :sleep_second
 
-    configure do |config|
-      config.max_retry_count  = 3
-      config.sleep_second     = 1
-      config.retryable_errors = DEFAULT_RETRYABLE_ERRORS
-      config.ignorable_errors = DEFAULT_IGNORABLE_ERRORS
+    # @!attribute retryable_errors
+    #   @return [Array<String>]
+    attr_accessor :retryable_errors
+
+    # @!attribute ignorable_errors
+    #   @return [Array<String>]
+    attr_accessor :ignorable_errors
+
+    def initialize
+      @max_retry_count  = 3
+      @sleep_second     = 1
+      @retryable_errors = DEFAULT_RETRYABLE_ERRORS
+      @ignorable_errors = DEFAULT_IGNORABLE_ERRORS
     end
   end
 end

@@ -10,6 +10,7 @@ module TwitterRetry
     @config ||= Config.new
   end
 
+  # @yieldparam [TwitterRetry::Config]
   def self.configure
     yield config if block_given?
   end
