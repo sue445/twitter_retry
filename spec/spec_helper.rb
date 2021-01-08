@@ -26,6 +26,7 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "twitter_retry"
 
 require "rspec-parameterized"
+require "rspec/its"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
