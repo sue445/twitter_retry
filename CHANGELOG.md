@@ -1,5 +1,11 @@
 ## Unreleased
-[full changelog](https://github.com/sue445/twitter_retry/compare/v0.2.0...master)
+[full changelog](https://github.com/sue445/twitter_retry/compare/v0.2.1...master)
+
+## v0.2.1
+[full changelog](https://github.com/sue445/twitter_retry/compare/v0.2.0...v0.2.1)
+
+* Remove activesupport from dependency
+  * https://github.com/sue445/twitter_retry/pull/30
 
 ## v0.2.0
 [full changelog](https://github.com/sue445/twitter_retry/compare/v0.1.0...v0.2.0)
