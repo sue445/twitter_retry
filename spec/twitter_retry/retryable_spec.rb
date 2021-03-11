@@ -71,7 +71,7 @@ describe TwitterRetry::Retryable do
       end
     end
 
-    context "When successful 4th called wiht Over capacity" do
+    context "When successful 4th called with Over capacity" do
       before do
         @follow_count = 1
         allow(twitter).to receive(:follow) do
