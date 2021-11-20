@@ -1,5 +1,11 @@
 ## Unreleased
-[full changelog](https://github.com/sue445/twitter_retry/compare/v0.2.1...master)
+[full changelog](https://github.com/sue445/twitter_retry/compare/v0.2.2...master)
+
+## v0.2.2
+[full changelog](https://github.com/sue445/twitter_retry/compare/v0.2.1...v0.2.2)
+
+* Enable MFA requirement for gem releasing
+  * https://github.com/sue445/twitter_retry/pull/31
 
 ## v0.2.1
 [full changelog](https://github.com/sue445/twitter_retry/compare/v0.2.0...v0.2.1)
