@@ -1,8 +1,8 @@
 module TwitterRetry
   module Retryable
-    # retry when error occurred matched with {#RETRYABLE_ERRORS}
+    # retry when error occurred matched with {TwitterRetry::Config#retryable_errors}
     # @return [true]  successful
-    # @return [false] error is ignored (ex. {Twitter::Error::Forbidden})
+    # @return [false] error is ignored (ex. `Twitter::Error::Forbidden`)
     # @raise [SuspendedError]
     # @raise [RetryOverError] retried {TwitterRetry::TwitterRetry#max_retry_count} count, but all failure
     # @raise [CannotRetryableError]
