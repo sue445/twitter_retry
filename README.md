@@ -3,7 +3,7 @@
 Twitter api awesome handling with retry
 
 [![Gem Version](https://badge.fury.io/rb/twitter_retry.svg)](http://badge.fury.io/rb/twitter_retry)
-[![Build Status](https://github.com/sue445/twitter_retry/workflows/test/badge.svg?branch=master)](https://github.com/sue445/twitter_retry/actions?query=workflow%3Atest)
+[![test](https://github.com/sue445/twitter_retry/actions/workflows/test.yml/badge.svg)](https://github.com/sue445/twitter_retry/actions/workflows/test.yml)
 [![Code Climate](https://codeclimate.com/github/sue445/twitter_retry/badges/gpa.svg)](https://codeclimate.com/github/sue445/twitter_retry)
 [![Coverage Status](https://coveralls.io/repos/sue445/twitter_retry/badge.svg?branch=master&service=github)](https://coveralls.io/github/sue445/twitter_retry?branch=master)
 
